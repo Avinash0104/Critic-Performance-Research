@@ -1,0 +1,36 @@
+backbone: cal_ql
+seed: 0
+
+dataset:
+  buffer_path: results/pendulum_offline_buffer.npz
+  n_transitions: 20000
+  pretrain_steps: 3000
+  noise_std: 0.3
+
+network:
+  hidden_dims: [256, 256]
+
+train:
+  lr: 0.0003
+  gamma: 0.99
+  tau: 0.005
+  batch_size: 256
+  offline_steps: 2000000
+  online_steps: 0  # half 2's online improvement is tested separately via pipeline.run_branch_sweep()
+  online_buffer_capacity: 20000
+  offline_frac: 0.5
+  eval_every: 250000
+  eval_episodes: 5
+  checkpoint_every: 250000  # must stay a multiple of eval_every (see pipeline.py's warning)
+
+cal_ql:
+  alpha_cql: 5.0
+  num_cql_samples: 4
+
+diagnostics:
+  batch_size: 1024
+  dormant_tau: 0.1
+  srank_eps: 0.01
+  probe_steps: 200
+  probe_lr: 0.0003
+  probe_batch_size: 256
