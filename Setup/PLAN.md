@@ -122,4 +122,4 @@ Two halves:
 2. **Compute strategy** - how the seeds x backbones training budget will
    actually be run (sequential, parallelized, time-boxed, etc.).
 3. **Online branch budget** - `online_steps`/`eval_every` passed to
-   `run_branch_sweep()` for half 2.
+   `run_online_sweep()` for half 2.

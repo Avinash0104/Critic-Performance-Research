@@ -15,8 +15,7 @@ train:
   gamma: 0.99
   tau: 0.005
   batch_size: 256
-  offline_steps: 2000000
-  online_steps: 0  # half 2's online improvement is tested separately via pipeline.run_branch_sweep()
+  offline_steps: 1000000
   online_buffer_capacity: 20000
   offline_frac: 0.5
   eval_every: 250000

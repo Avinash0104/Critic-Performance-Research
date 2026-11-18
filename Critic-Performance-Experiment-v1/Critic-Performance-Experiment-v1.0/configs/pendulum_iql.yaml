@@ -1,0 +1,36 @@
+backbone: iql
+seed: 0
+
+dataset:
+  buffer_path: results/pendulum_offline_buffer.npz
+  n_transitions: 20000
+  pretrain_steps: 3000
+  noise_std: 0.3
+
+network:
+  hidden_dims: [256, 256]
+
+train:
+  lr: 0.0003
+  gamma: 0.99
+  tau: 0.005
+  batch_size: 256
+  offline_steps: 1000000
+  online_buffer_capacity: 20000
+  offline_frac: 0.5
+  eval_every: 250000
+  eval_episodes: 5
+  checkpoint_every: 250000  # must stay a multiple of eval_every (see pipeline.py's warning)
+
+iql:
+  expectile: 0.7
+  awr_beta: 3.0
+  awr_clip: 100.0
+
+diagnostics:
+  batch_size: 1024
+  dormant_tau: 0.1
+  srank_eps: 0.01
+  probe_steps: 200
+  probe_lr: 0.0003
+  probe_batch_size: 256
